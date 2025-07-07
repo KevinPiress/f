@@ -1,0 +1,188 @@
+/* Importação de uma fonte (Opcional, exemplo com Roboto) */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+
+:root {
+    --text-color: #e0e0e0; /* Cor principal do texto e ícones */
+    --text-secondary-color: #b0b0b0; /* Cor do subtítulo */
+    --container-bg: rgba(20, 20, 40, 0.6); /* Fundo do container de links - Roxo/Azul escuro semi-transparente */
+    --container-blur: 8px; /* Intensidade do desfoque */
+    --hover-bg: rgba(50, 50, 80, 0.7); /* Fundo dos links ao passar o mouse */
+    --icon-size-main: 48px;
+    --icon-size-footer: 24px;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif; /* Fonte do Google Fonts, ou use uma de sistema */
+    color: var(--text-color);
+    background-color: #050816; /* Cor de fundo escura de fallback */
+    /* SUBSTITUA 'caminho/para/sua/imagem-de-fundo.jpg' PELA SUA IMAGEM */
+    background-image: url('caminho/para/sua/imagem-de-fundo.jpg');
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed; /* Para o fundo não rolar com o conteúdo */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.page-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.page-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.page-header h1 {
+    font-size: 2.5em; /* Ajuste conforme necessário */
+    font-weight: 700;
+    margin: 0 0 5px 0;
+    color: #ffffff; /* Branco para o título principal */
+    text-shadow: 0 0 10px rgba(100, 100, 255, 0.5); /* Leve brilho azulado */
+}
+
+.page-header p {
+    font-size: 0.9em;
+    font-weight: 300;
+    letter-spacing: 2px; /* Espaçamento entre letras, como no exemplo */
+    text-transform: uppercase;
+    color: var(--text-secondary-color);
+    margin: 0;
+}
+
+.link-container {
+    background-color: var(--container-bg);
+    border-radius: 15px;
+    padding: 30px 25px;
+    width: 90%;
+    max-width: 700px; /* Largura máxima do container */
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.2);
+    backdrop-filter: blur(var(--container-blur));
+    -webkit-backdrop-filter: blur(var(--container-blur)); /* Para Safari */
+    border: 1px solid rgba(255, 255, 255, 0.1); /* Borda sutil */
+}
+
+.category-links {
+    display: grid;
+    /* Tenta criar colunas com largura mínima de 120px, e no máximo 3 colunas em telas maiores */
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 25px; /* Espaço entre os itens da grade */
+}
+
+.category-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: var(--text-color);
+    padding: 15px 10px;
+    border-radius: 10px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    text-align: center;
+}
+
+.category-item:hover,
+.category-item:focus {
+    background-color: var(--hover-bg);
+    transform: translateY(-3px);
+    outline: none;
+}
+
+.category-item img {
+    width: var(--icon-size-main);
+    height: var(--icon-size-main);
+    margin-bottom: 10px;
+    /* Se seus ícones forem escuros e você quiser eles brancos/claros via CSS: */
+    /* filter: brightness(0) invert(1) sepia(0.1) saturate(0) hue-rotate(200deg); */
+    /* A linha acima tenta deixar branco e pode dar um leve tom azulado, ajuste conforme seus ícones */
+    /* Se já tiver ícones brancos/claros, não precisa do filter */
+    filter: drop-shadow(0 0 3px rgba(150, 150, 255, 0.4)); /* Brilho no ícone */
+}
+
+.category-item span {
+    font-size: 0.85em;
+    font-weight: 400;
+}
+
+.social-footer {
+    margin-top: 40px;
+    display: flex;
+    gap: 20px; /* Espaço entre os ícones do rodapé */
+}
+
+.social-footer a {
+    display: inline-block;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.social-footer a:hover,
+.social-footer a:focus {
+    transform: scale(1.15);
+    opacity: 0.8;
+    outline: none;
+}
+
+.social-footer img {
+    width: var(--icon-size-footer);
+    height: var(--icon-size-footer);
+    /* Para ícones do rodapé (ajuste o filter se precisar) */
+    filter: brightness(0) invert(1) drop-shadow(0 0 2px rgba(150, 150, 255, 0.5));
+}
+
+/* Media Queries para Responsividade (Ajustes para telas menores) */
+@media (max-width: 768px) {
+    .page-header h1 {
+        font-size: 2em;
+    }
+    .link-container {
+        padding: 25px 20px;
+        max-width: 95%;
+    }
+    .category-links {
+        /* Em telas menores, pode querer forçar 2 colunas ou menos se minmax não for ideal */
+        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+        gap: 20px;
+    }
+    .category-item img {
+        width: calc(var(--icon-size-main) * 0.85);
+        height: calc(var(--icon-size-main) * 0.85);
+    }
+}
+
+@media (max-width: 480px) {
+    .page-header h1 {
+        font-size: 1.8em;
+    }
+    .page-header p {
+        font-size: 0.8em;
+        letter-spacing: 1.5px;
+    }
+    .category-links {
+         /* Garante pelo menos 2 colunas se couber, senão 1 */
+        grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+        /* Se preferir sempre 2 colunas em celular e com rolagem horizontal caso não caibam
+           Use grid-template-columns: repeat(2, 1fr); e overflow-x: auto no .category-links.
+           Mas o auto-fit é geralmente melhor para evitar rolagem.
+        */
+        gap: 15px;
+    }
+     .category-item img {
+        width: calc(var(--icon-size-main) * 0.75);
+        height: calc(var(--icon-size-main) * 0.75);
+    }
+    .category-item span {
+        font-size: 0.8em;
+    }
+}
