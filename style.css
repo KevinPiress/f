@@ -73,13 +73,6 @@ body {
     border: 1px solid rgba(255, 255, 255, 0.1); /* Borda sutil */
 }
 
-.category-links {
-    display: grid;
-    /* Tenta criar colunas com largura mínima de 120px, e no máximo 3 colunas em telas maiores */
-    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-    gap: 25px; /* Espaço entre os itens da grade */
-}
-
 .category-item {
     display: flex;
     flex-direction: column;
